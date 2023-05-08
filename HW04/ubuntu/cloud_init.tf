@@ -9,10 +9,12 @@ data "template_file" "net_data" {
   count    = length(var.instance_name)
   template = file("${path.module}/cloud_init/network.yml")
   vars = {
-    net_address    = var.net_addr[count.index]
+    net_address    = "${length(var.net_addr) == "count" ? var.net_addr[count.index] :
+                     "${cidrhost("${var.net_subnet}/${var.net_mask}", "${count.index+10}")}"}"
     net_mask       = var.net_mask
     net_gw4        = var.net_gw4
     net_nameserver = var.net_nameserver
+    net_domain     = var.net_domain
   }
 }
 

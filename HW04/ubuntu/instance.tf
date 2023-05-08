@@ -1,8 +1,8 @@
 resource "libvirt_domain" "instance" {
   count  = length(var.instance_name)
   name   = var.instance_name[count.index]
-  memory = var.instance_memory[count.index]
-  vcpu   = var.instance_vcpu[count.index]
+  memory = try(var.instance_memory[count.index],var.instance_memory[0])
+  vcpu   = try(var.instance_vcpu[count.index],var.instance_vcpu[0])
 
   cloudinit = libvirt_cloudinit_disk.cloudinit[count.index].id
 

@@ -38,15 +38,23 @@ variable "net_name" {
 }
 variable "net_nameserver" {
   type    = string
-  default = "192.168.122.1"
+  default = "10.17.3.1"
+}
+variable "net_subnet" {
+  type    = string
+  default = "10.17.3.0"
 }
 variable "net_mask" {
-  type    = string
+  type    = number
   default = "24"
 }
 variable "net_gw4" {
   type    = string
-  default = "192.168.122.1"
+  default = "10.17.3.1"
+}
+variable "net_domain" {
+  type    = string
+  default = "local"
 }
 variable "instance_name" {
   type = list(string)
@@ -63,6 +71,6 @@ variable "image_path" {
 variable "net_addr" {
   type = list(string)
   default = [
-    "192.168.122.200"
+    "10.17.3.10"
   ]
 }

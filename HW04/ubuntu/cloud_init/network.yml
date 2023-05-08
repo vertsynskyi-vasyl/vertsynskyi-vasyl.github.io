@@ -8,3 +8,5 @@ ethernets:
     nameservers:
       addresses:
         - ${net_nameserver}
+      search:
+        - ${net_domain}

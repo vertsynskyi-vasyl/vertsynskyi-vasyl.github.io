@@ -5,7 +5,7 @@ hostname: ${hostname}
 ## Modifying root password
 chpasswd:
   list: |
-    root:root
+    root:terraform-libvirt-linux
   expire: False
 
 ## Enable direct root access
@@ -14,19 +14,26 @@ disable_root: false
 ## Allow ssh password authentication
 ssh_pwauth: true
 
-## Setup users and ssh keys
+# Add the empty group hashicorp.
+groups:
+  - hashicorp
+
+# Add users to the system.
 users:
-  - name: vfricou
-    gecos: Vincent Fricou
-    groups: root
-    lock_passwd: true
+  - default
+  - name: terraform
+    gecos: Terraform
+    shell: /bin/bash
+    primary_group: hashicorp
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    lock_passwd: false
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDm5ZCYzVCTP4+MBE9+921LXbj5rKLsWVUzqQjPoAp1 vfricou - Vincent FRICOU <vincent(at)fricouv(dot)eu>
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPoIqZUHAGPiACIar1ttKDCONU0bXWjD91+xj4okeXMi Terraform
   - name: root
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDm5ZCYzVCTP4+MBE9+921LXbj5rKLsWVUzqQjPoAp1 vfricou - Vincent FRICOU <vincent(at)fricouv(dot)eu>
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPoIqZUHAGPiACIar1ttKDCONU0bXWjD91+xj4okeXMi Terraform
 
 ## Install packages
 packages:
   - qemu-guest-agent
-  - python
