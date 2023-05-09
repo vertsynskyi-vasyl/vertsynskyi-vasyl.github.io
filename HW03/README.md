@@ -109,7 +109,7 @@ Response for login :  HTTP/1.1 401 Unauthorized
 curl -s -I -u testuser:test1234 dev-balancer01.dev.local/login |head -1
 HTTP/1.1 404 Not Found
 ```
-Отримали `404` замість `403`, отже авторизація пройшла вдало.
+Отримали `404 Not Found` замість `401 Unauthorized`, отже авторизація пройшла вдало.
 
 ![](./images/img_001.png)
 
