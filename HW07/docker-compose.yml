@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  balancer:
+    build:
+      context: ./nginx
+    ports:
+        - 8182:80
+  web01:
+    image: httpd
+    volumes:
+        - ./apache/web01:/usr/local/apache2/htdocs
+  web02:
+    image: httpd
+    volumes:
+        - ./apache/web02:/usr/local/apache2/htdocs
