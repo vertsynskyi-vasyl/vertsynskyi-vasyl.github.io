@@ -1,0 +1,6 @@
+- name: Enable and restart MySQL server
+  service:
+    name: mysqld
+    state: restarted
+    enabled: yes
+  listen: enable mysql

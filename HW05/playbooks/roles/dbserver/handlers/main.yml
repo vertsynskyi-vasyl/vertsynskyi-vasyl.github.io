@@ -1,0 +1,7 @@
+- name: Enable and restart MySQL server in RHEL
+  import_tasks: redhat_mysql.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+
+- name: Enable and restart MySQL server in Debian
+  import_tasks: debian_mysql.yml
+  when: ansible_facts['os_family']|lower == 'debian'

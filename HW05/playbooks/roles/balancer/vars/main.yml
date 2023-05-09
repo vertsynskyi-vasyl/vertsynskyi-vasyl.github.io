@@ -1,0 +1,3 @@
+webservers:
+  - dev-apache01.dev.local
+  - dev-apache02.dev.local

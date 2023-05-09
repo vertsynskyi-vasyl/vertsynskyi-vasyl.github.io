@@ -1,0 +1,18 @@
+- name: Install the correct web server for RHEL
+  import_tasks: redhat_nginx.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+
+- name: Install the correct web server for Debian
+  import_tasks: debian_nginx.yml
+  when: ansible_facts['os_family']|lower == 'debian'
+
+- name: Setup nginx conf
+  template:
+    src=load-balancer.conf.j2
+    dest=/etc/nginx/conf.d/load-balancer.conf
+
+- name: Delete default nginx vhost
+  file:
+    path=/etc/nginx/sites-enabled/default
+    state=absent
+  notify: enable nginx

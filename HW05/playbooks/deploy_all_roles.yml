@@ -1,0 +1,12 @@
+---
+- hosts: dev_balancers
+  roles:
+    - { role: balancer, become: yes }
+
+- hosts: dev_databases
+  roles:
+    - { role: dbserver, become: yes }
+
+- hosts: dev_webservers
+  roles:
+    - { role: webserver, become: yes }

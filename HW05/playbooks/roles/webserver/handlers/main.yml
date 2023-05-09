@@ -1,0 +1,7 @@
+- name: Enable and restart web server in RHEL
+  import_tasks: redhat_apache.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+
+- name: Enable and restart web server in Debian
+  import_tasks: debian_apache.yml
+  when: ansible_facts['os_family']|lower == 'debian'

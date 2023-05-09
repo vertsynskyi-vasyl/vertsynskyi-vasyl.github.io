@@ -1,0 +1,7 @@
+- name: Update apt cache and install Apache and php
+  ansible.builtin.yum:
+    pkg:
+      - php
+      - php-mysqlnd
+      - php-pecl-zip
+    update_cache: yes
