@@ -1,0 +1,17 @@
+# vim: filetype=yaml
+#
+all:
+  children:
+    dev_balancers:
+      hosts:
+        dev-balancer[01:01]:
+    dev_workers:
+      hosts:
+        dev-worker[01:01]:
+    dev_webservers:
+      hosts:
+        dev-apache[01:02]:
+    dev_databases:
+      hosts:
+        dev-mysql[01:02]:
+

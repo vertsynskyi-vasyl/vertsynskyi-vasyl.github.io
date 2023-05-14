@@ -1,0 +1,21 @@
+- name: Install docker
+  import_tasks: docker.yml
+
+- name: Install OpenJDK JDK 17
+  ansible.builtin.apt:
+    name: openjdk-17-jdk
+    state: present
+
+- name: Create a directory for Jenkins
+  ansible.builtin.file:
+    path: /home/jenkins
+    state: directory
+    owner: terraform
+    group: src
+    mode: '0770'
+
+- name: Set Jenkins authorized key
+  ansible.posix.authorized_key:
+    user: terraform
+    state: present
+    key: "{{ lookup('file', '{{ jenkins_key }}' ) }}"

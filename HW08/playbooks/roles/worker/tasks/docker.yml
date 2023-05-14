@@ -1,0 +1,43 @@
+- name: install packages required by docker
+  apt:
+    update_cache: yes
+    state: latest
+    name:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gpg-agent
+    - software-properties-common
+
+- name: add docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: add docker apt repo
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu "{{ ansible_distribution_release }}" stable
+    state: present
+
+- name: install docker
+  apt:
+    update_cache: yes
+    state: latest
+    name:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+- name: allow insecure registries in 10.17.3.1:5000
+  ansible.builtin.lineinfile:
+    path: /etc/docker/daemon.json
+    line: "{ \"insecure-registries\":[\"10.17.3.1:5000\"] }"
+    create: yes
+
+- name: add a build user to the docker group
+  ansible.builtin.user:
+    name: "{{ build_user }}"
+    groups: docker
+    append: yes
+
+- service: name=docker state=restarted

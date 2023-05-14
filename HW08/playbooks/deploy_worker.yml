@@ -1,0 +1,4 @@
+---
+- hosts: dev_workers
+  roles:
+    - { role: worker, become: yes }

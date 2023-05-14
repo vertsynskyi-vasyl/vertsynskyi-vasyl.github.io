@@ -1,0 +1,2 @@
+jenkins_key: ~/.ssh/keys/JENKINS.pub
+build_user: terraform
