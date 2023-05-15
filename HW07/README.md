@@ -29,14 +29,14 @@ services:
         - ./apache/web02:/usr/local/apache2/htdocs
 ```
 
-Для побудови імеджу `nginx` ми використаємо простий Dockerfile, який лише додає конфігураційний файл:
+Для побудови образу `nginx` ми використаємо простий Dockerfile, який лише додає конфігураційний файл:
 ```docker
 FROM nginx
 
 COPY load-balancer.conf /etc/nginx/conf.d/default.conf
 ```
 
-Для контейнерів на базі `apache` ми викорисуємо опцію `volumes` для монтування локальних каталогів, що містять файл _index.html_.
+Для контейнерів на базі `apache` ми використаємо опцію `volumes` для монтування локальних каталогів, що містять файл _index.html_.
 
 ### Змінні
 В файл .env додамо змінну `COMPOSE_PROJECT_NAME=dev`, яка визначить назву нашого проєкту.

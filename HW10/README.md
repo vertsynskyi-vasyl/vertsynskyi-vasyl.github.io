@@ -5,6 +5,9 @@
 2. Write Kubernetes configuration file that prepare and start Nginx-server with load balancing web server
 3. Provide your Kubernetes configuration file and screenshots that demonstrate response page of web server
 
+
+_* У нас буде трохи цікавіша задача: два веб сервери та сервіс балансування — схема схожа на [сьому роботу](../HW07/README.md), щоб можна було порівняти із docker-compose._
+
 ## Підготовка
 ### Інсталяція
 Встановлюємо minikube:
@@ -115,7 +118,7 @@ metadata:
 
 ### Веб сервери
 
-Створимо конфігурацію для нашого веб северу — файл web01.yml з таким вмістом:
+Створимо конфігурацію для нашого веб серверу — файл web01.yml з таким вмістом:
 
 ```yaml
 apiVersion: apps/v1
@@ -205,7 +208,7 @@ web02-79456fbdc-vvxjj    1/1     Running   1 (23m ago)   1h
 
 
 ## Tестування
-Якщо ви звернули увагу, то наш сервір `balancer` має статус зовнішньої адреси — _pending_.
+Якщо ви звернули увагу, то наш сервер `balancer` має статус зовнішньої адреси — _pending_.
 ```bash
 kubectl get svc balancer
 NAME       TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
