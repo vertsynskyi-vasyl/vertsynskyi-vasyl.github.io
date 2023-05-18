@@ -33,7 +33,8 @@ terraform init
 ### SSH ключ
 Для можливості підключення до віртуальних машин по SSH створимо  ключ
 ```bash
-ssh-keygen -t ed25519 -P "" -C "Terraform" -f Terraform
+mkdir -p ~/.ssh/keys
+ssh-keygen -t ed25519 -P "" -C "Terraform" -f ~/.ssh/keys/Terraform
 ```
 Вміст файлу `Terraform.pub` треба додати у файл `ubuntu/cloud_init/user.yml`.
 
@@ -45,7 +46,7 @@ ssh-keygen -t ed25519 -P "" -C "Terraform" -f Terraform
 
 _! Зверніть увагу на параметр `storage_pool_path` — слід вказати директорію, де у вас достатньо вільного місця для розгортання нашої інфраструктури._
 
-```terraform
+```hcl
 terraform {
   required_providers {
     libvirt = {
@@ -79,7 +80,7 @@ terraform apply -auto-approve
 ```
 
 В результаті маємо отримати повідомлення:
-```terraform
+```hcl
 Apply complete! Resources: 18 added, 0 changed, 0 destroyed.
 ```
 

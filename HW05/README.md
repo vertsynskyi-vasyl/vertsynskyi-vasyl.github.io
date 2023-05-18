@@ -64,7 +64,7 @@ ansible-inventory --graph
 ---
 ansible_connection: paramiko_ssh
 ansible_user: terraform
-ansible_ssh_private_key_file: ./Terraform
+ansible_ssh_private_key_file: ~/.ssh/keys/Terraform.pub
 ansible_python_interpreter: /usr/bin/python3
 ```
 Наразі тут вказані дані для підключення по протоколу SSH і зокрема вказаний шлях до ключа, який ми створили у попередній роботі.
