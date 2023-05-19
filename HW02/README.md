@@ -1,5 +1,22 @@
 # Git/GitHub
 
+## Завдання
+ 1. Create new public repository on GitHub and name it as "DevOps-CrashCourse"
+ 2. In the README.md file add the following information:
+    * DevOps Crash Course Lab
+    * Your Name and Surname
+ 3. Clone the repository locally
+ 4. Create a branch named develop
+ 5. Take some template (one you like) from https://html5up.net/ and add it as code into your branch develop
+ 6. Commit changes
+ 7. Make some changes into the code to provide your name on the main page and commit changes
+ 8. Push the branch develop into remote repository
+ 9. Create pull request to merge the develop branch into main
+10. Using GitHub Pages publish your site
+11. Make sure everything works, then create a zip-archive of your site and publish it as a release
+12. Provide your links on your GitHub repository and published site
+
+
 ## 1. Create new ~~public~~ repository ~~on GitHub~~ and name it as "DevOps-CrashCourse"
 Трохи ускладнимо задачу та виконаємо її без відвідування GitHub'у, тобто повністю із командної строки
 

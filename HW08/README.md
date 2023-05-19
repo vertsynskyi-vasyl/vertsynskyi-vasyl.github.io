@@ -1,9 +1,13 @@
+# Jenkins
+
 ## Завдання
 
 1. Setup your Jenkins instance
 2. Configure a connected agent
 3. Create a pipeline that builds Docker image from the homework #6
 4. Provide your screenshots that demonstrates console output of Jenkins
+
+---
 
 ## Jenkins
 ### Встановлення Jenkins
