@@ -1,0 +1,36 @@
+pipeline {
+    environment {
+    dockerRegistry = "http://10.17.3.1:5000"
+    gitURL = "http://10.17.3.1:9000/hw08.git"
+    imageName = "nginx-test"
+    dockerImage = ''
+    }
+    agent { label 'dev' }
+    stages {
+        stage('Cloning our Git') {
+            steps {
+                git "${env.gitURL}"
+            }
+        }
+
+        stage('Build and Push Docker Image...') {
+            steps {
+                script {
+                  // CUSTOM REGISTRY
+                    docker.withRegistry("${env.dockerRegistry}") {
+
+                        /* Build the container image */
+                        def dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
+
+                        /* Push the container to the custom Registry */
+                        dockerImage.push()
+                        dockerImage.push("latest")
+
+                    }
+                    /* Remove docker image*/
+                    sh "docker rmi -f ${env.imageName}:${env.BUILD_ID}"
+                }
+            }
+        }
+    }
+}

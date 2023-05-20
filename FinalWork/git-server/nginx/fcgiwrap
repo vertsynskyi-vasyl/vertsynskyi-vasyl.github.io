@@ -1,0 +1,4 @@
+FCGI_USER="nginx"
+FCGI_GROUP="nginx"
+FCGI_SOCKET_OWNER="nginx"
+FCGI_SOCKET_GROUP="nginx"

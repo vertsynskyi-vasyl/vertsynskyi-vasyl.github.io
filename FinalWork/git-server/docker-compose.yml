@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  git:
+    build:
+      context: ./nginx
+      args:
+        - JENKINS_URL=${JENKINS_URL}
+        - JENKINS_USER=${JENKINS_USER}
+        - TOKEN=${TOKEN}
+        - PROJECT=${PROJECT}
+    ports:
+      - 9000:80
